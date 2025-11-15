@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Nearby Services</title>
+  <!-- keep the same stylesheet path; make sure css/style.css exists -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -11,7 +12,7 @@
     <h1>Find Nearby Services</h1>
     <nav>
       <a href="#">Home</a>
-      <a href="#">Map</a>
+      <a href="#map">Map</a>
       <a href="#">Contact</a>
     </nav>
   </header>
@@ -34,10 +35,38 @@
         <div class="card">🚗 Parking</div>
       </div>
     </section>
+
+    <!-- === Stage 2: Canvas API Map === -->
+    <section id="map" class="map-section">
+      <div class="map-toolbar" role="toolbar" aria-label="Map filters">
+        <button class="filter-btn" data-cat="all" aria-pressed="true">All</button>
+        <button class="filter-btn" data-cat="restaurants">🍔 Restaurants</button>
+        <button class="filter-btn" data-cat="gas">⛽ Gas</button>
+        <button class="filter-btn" data-cat="hospitals">🏥 Hospitals</button>
+        <button class="filter-btn" data-cat="stores">🛒 Stores</button>
+        <button class="filter-btn" data-cat="hotels">🏨 Hotels</button>
+        <button class="filter-btn" data-cat="parking">🅿 Parking</button>
+        <button id="resetBtn" class="reset-btn" title="Reset view">Reset</button>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="mapCanvas" width="800" height="500" aria-label="Nearby services map">
+          <!-- Fallback text for very old browsers -->
+          Your browser does not support the HTML5 Canvas element.
+        </canvas>
+      </div>
+
+      <p class="map-hint">
+        Tip: Click near a pin to highlight it. Resize the window and the map redraws automatically.
+      </p>
+    </section>
   </main>
 
   <footer>
-    <p>Stage 1 — HTML & CSS complete ✅ | Upcoming: Canvas (Stage 2)</p>
+    <p>Stage 2 — Canvas API complete ✅ | Upcoming: Audio (Stage 3) &amp; Video (Stage 4)</p>
   </footer>
+
+  <!-- Stage 2 script -->
+  <script src="js/app.js"></script>
 </body>
 </html>
