@@ -16,6 +16,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 header h1 {
@@ -33,7 +35,7 @@ nav a:hover {
   text-decoration: underline;
 }
 
-/* Hero Section */
+/* Hero */
 .hero {
   text-align: center;
   padding: 60px 20px;
@@ -47,17 +49,31 @@ nav a:hover {
 }
 
 .hero p {
-  font-size: 1.1em;
-  margin-bottom: 20px;
+  font-size: 1.05em;
+  margin-bottom: 14px;
 }
 
-.hero button {
-  padding: 10px 20px;
-  background: white;
-  color: #0078d7;
-  border: none;
-  border-radius: 6px;
-  cursor: not-allowed;
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.hero-btn {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hero-status {
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  border-color: rgba(255,255,255,.35);
+}
+
+.hero-hint {
+  color: rgba(255,255,255,.88);
 }
 
 /* Categories */
@@ -88,36 +104,82 @@ nav a:hover {
   transition: 0.2s ease;
 }
 
-/* Footer */
-footer {
-  background: #f0f0f0;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9em;
-}
-
-/* === Stage 2: Canvas Map === */
-.map-section {
-  padding: 30px 20px 50px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.map-toolbar {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 16px;
-}
-
-.filter-btn, .reset-btn {
+/* Shared UI */
+.btn {
   padding: 10px 14px;
   border: 1px solid #d6e3ff;
   background: #ffffff;
   color: #1b4e9b;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95em;
+  color: #1b4e9b;
+  flex-wrap: wrap;
+}
+
+.control input[type="range"] { width: 160px; }
+
+.status {
+  font-size: 0.95em;
+  color: #555;
+  background: rgba(255,255,255,.95);
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(214, 227, 255, 0.85);
+}
+
+.hint {
+  text-align: center;
+  color: #666;
+  margin: 10px auto 0;
+  max-width: 1000px;
+  font-size: .95em;
+}
+
+/* Sections */
+.audio-section, .map-section {
+  padding: 30px 20px 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Audio */
+.audio-panel {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  padding: 14px 12px;
+  margin-top: 10px;
+}
+
+/* Canvas */
+.map-toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .filter-btn[aria-pressed="true"] {
@@ -134,14 +196,15 @@ footer {
 
 #mapCanvas {
   width: 100%;
-  height: 500px;           /* CSS size; JS will handle DPI scaling */
+  height: 500px;
   display: block;
   border-radius: 8px;
 }
 
-.map-hint {
+/* Footer */
+footer {
+  background: #f0f0f0;
   text-align: center;
-  color: #666;
-  margin-top: 10px;
-  font-size: .95em;
+  padding: 15px;
+  font-size: 0.9em;
 }

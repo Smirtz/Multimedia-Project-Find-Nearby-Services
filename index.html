@@ -4,24 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Find Nearby Services</title>
-  <!-- keep the same stylesheet path; make sure css/style.css exists -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
+  <header id="top">
     <h1>Find Nearby Services</h1>
     <nav>
-      <a href="#">Home</a>
+      <a href="#top">Home</a>
+      <a href="#audio">Audio</a>
       <a href="#map">Map</a>
-      <a href="#">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <h2>Discover what's near you</h2>
-      <p>Find restaurants, gas stations, hospitals, and more — right from your location.</p>
-      <button disabled>Locate Me (Coming Soon)</button>
+      <p>Multimedia project using HTML/CSS + Canvas API + Audio API.</p>
+
+      <div class="hero-actions">
+        <button id="locateBtn" class="btn hero-btn" type="button">Locate Me</button>
+        <span id="locationStatus" class="status hero-status" aria-live="polite">
+          Location not requested yet.
+        </span>
+      </div>
+
+      <p class="hint hero-hint">
+        Note: the canvas map is a schematic demo. Your location is shown as a projected point (not a real map).
+      </p>
     </section>
 
     <section class="categories">
@@ -32,41 +41,67 @@
         <div class="card">🏥 Hospitals</div>
         <div class="card">🛒 Stores</div>
         <div class="card">🏨 Hotels</div>
-        <div class="card">🚗 Parking</div>
+        <div class="card">🅿 Parking</div>
       </div>
     </section>
 
-    <!-- === Stage 2: Canvas API Map === -->
+    <!-- Stage 3: Audio API -->
+    <section id="audio" class="audio-section">
+      <h2>Audio Controls (Web Audio API)</h2>
+
+      <div class="audio-panel" role="group" aria-label="Audio controls">
+        <button id="audioInitBtn" class="btn" type="button">Enable Audio</button>
+
+        <button id="ambientBtn" class="btn" type="button" disabled>
+          Ambient: Off
+        </button>
+
+        <label class="control">
+          Volume
+          <input id="volumeSlider" type="range" min="0" max="1" value="0.35" step="0.01" disabled />
+        </label>
+
+        <span id="audioStatus" class="status" aria-live="polite">
+          Audio is disabled (click “Enable Audio”).
+        </span>
+      </div>
+
+      <p class="hint">
+        After enabling audio, you’ll hear a click when changing filters and a “ping” when selecting a pin.
+      </p>
+    </section>
+
+    <!-- Stage 2: Canvas API -->
     <section id="map" class="map-section">
+      <h2>Nearby Services Map (Canvas)</h2>
+
       <div class="map-toolbar" role="toolbar" aria-label="Map filters">
-        <button class="filter-btn" data-cat="all" aria-pressed="true">All</button>
-        <button class="filter-btn" data-cat="restaurants">🍔 Restaurants</button>
-        <button class="filter-btn" data-cat="gas">⛽ Gas</button>
-        <button class="filter-btn" data-cat="hospitals">🏥 Hospitals</button>
-        <button class="filter-btn" data-cat="stores">🛒 Stores</button>
-        <button class="filter-btn" data-cat="hotels">🏨 Hotels</button>
-        <button class="filter-btn" data-cat="parking">🅿 Parking</button>
-        <button id="resetBtn" class="reset-btn" title="Reset view">Reset</button>
+        <button class="filter-btn btn" data-cat="all" aria-pressed="true">All</button>
+        <button class="filter-btn btn" data-cat="restaurants">🍔 Restaurants</button>
+        <button class="filter-btn btn" data-cat="gas">⛽ Gas</button>
+        <button class="filter-btn btn" data-cat="hospitals">🏥 Hospitals</button>
+        <button class="filter-btn btn" data-cat="stores">🛒 Stores</button>
+        <button class="filter-btn btn" data-cat="hotels">🏨 Hotels</button>
+        <button class="filter-btn btn" data-cat="parking">🅿 Parking</button>
+        <button id="resetBtn" class="btn" type="button" title="Reset view">Reset</button>
       </div>
 
       <div class="canvas-wrap">
-        <canvas id="mapCanvas" width="800" height="500" aria-label="Nearby services map">
-          <!-- Fallback text for very old browsers -->
+        <canvas id="mapCanvas" width="800" height="500" aria-label="Nearby services schematic map">
           Your browser does not support the HTML5 Canvas element.
         </canvas>
       </div>
 
-      <p class="map-hint">
+      <p class="hint">
         Tip: Click near a pin to highlight it. Resize the window and the map redraws automatically.
       </p>
     </section>
   </main>
 
   <footer>
-    <p>Stage 2 — Canvas API complete ✅ | Upcoming: Audio (Stage 3) &amp; Video (Stage 4)</p>
+    <p>Canvas ✅ Audio ✅</p>
   </footer>
 
-  <!-- Stage 2 script -->
   <script src="js/app.js"></script>
 </body>
 </html>
